@@ -1,6 +1,6 @@
 spring:
   application:
-    name: HelloClient
+    name: hello-client
 
 server:
   port: 7211
@@ -16,10 +16,7 @@ eureka:
       instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
 
 
-endpoints:
-  restart:
-    enabled: true
-  shutdown:
-    enabled: true
-  health:
-    sensitive: false
+management:
+  endpoint:
+    shutdown:
+      enabled: true

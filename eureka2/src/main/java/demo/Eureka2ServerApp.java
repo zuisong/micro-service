@@ -1,19 +1,18 @@
-package com.jte.cloud.platform.eureka.server;
+package demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
+import java.lang.invoke.MethodHandles;
+
 /**
  * Hello world!
- *
  */
 @SpringBootApplication
 @EnableEurekaServer
-public class EurekaServerApp
-{
-    public static void main(String[] args)
-    {
-        SpringApplication.run(EurekaServerApp.class, args);
+public class Eureka2ServerApp {
+    public static void main(String[] args) {
+        SpringApplication.run(MethodHandles.lookup().lookupClass(), args);
     }
 }

@@ -4,10 +4,9 @@ server:
 spring:
   application:
     name: registry
-    index: 102
 
 eureka:
-  instance: 
+  instance:
     metadata-map:
       cluster: jte-cloud-platform-cluster
     hostname: localhost

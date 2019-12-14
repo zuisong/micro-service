@@ -4,10 +4,9 @@ server:
 spring:
   application:
     name: registry
-    index: 102
 
 eureka:
-  instance: 
+  instance:
     metadata-map:
       cluster: jte-cloud-platform-cluster
     hostname: 10.104.192.83
@@ -20,7 +19,7 @@ eureka:
   server:
     waitTimeInMsWhenSyncEmpty: 0
     enableSelfPreservation: false
-    
+
 logging:
   level:
     root: warn
