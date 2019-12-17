@@ -3,3 +3,10 @@ target/
 .idea/
 
 *.iml
+
+.settings/
+.project
+.classpath
+.factorypath
+
+!.gitignore
