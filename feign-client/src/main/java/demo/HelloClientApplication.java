@@ -31,7 +31,7 @@ public class HelloClientApplication {
         return user.toString();
     }
 
-    @FeignClient("HELLO-SERVER")
+    @FeignClient("HELLOSERVER")
     interface HelloClient {
         @RequestMapping(value = "/get", method = RequestMethod.GET)
         @ResponseBody

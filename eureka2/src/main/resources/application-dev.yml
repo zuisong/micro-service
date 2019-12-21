@@ -4,13 +4,17 @@ server:
 spring:
   application:
     name: registry2
+  security:
+    user:
+      name: admin
+      password: admin
 
 eureka:
   instance:
     metadata-map:
-      cluster: jte-cloud-platform-cluster
+      cluster: demo-cluster
     hostname: localhost
-    prefer-ip-address: true
+    prefer-ip-address: on
   client:
     registerWithEureka: false
     # 表示是否注册自身到eureka服务器，因为当前这个应用就是eureka服务器，没必要注册自身，所以这里是false
@@ -21,4 +25,5 @@ eureka:
   server:
     waitTimeInMsWhenSyncEmpty: 0
     enableSelfPreservation: false
-    
+
+

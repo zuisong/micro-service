@@ -21,6 +21,7 @@ public class HelloServerApplication {
         SpringApplication.run(HelloServerApplication.class, args);
     }
 
+
     @GetMapping("/get")
     @ResponseBody
     public User hello1(@RequestParam("name") String name) {

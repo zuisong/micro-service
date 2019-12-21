@@ -17,17 +17,17 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
-          lower-case-service-id: true
+          enabled: on
+          lower-case-service-id: on
       routes:
-        - id: hello-server
-          uri: lb://HELLO-SERVER
+        - id: helloserver
+          uri: lb://HELLOSERVER
           predicates:
-            - Path=/hello-server/**
+            - Path=/helloserver/**
           filters:
             - StripPrefix=1
         - id: hello-client
-          uri: lb://HELLO-CLIENT
+          uri: lb://HELLOCLIENT
           predicates:
             - Path=/hello-client/**
           filters:

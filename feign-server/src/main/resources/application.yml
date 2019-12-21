@@ -1,16 +1,12 @@
 spring:
   application:
-    name: hello-server
+    name: HelloServer
+  cloud:
+    config:
+      fail-fast: on
+      uri: http://localhost:8888
+  profiles:
+    active: dev
 
 server:
   port: 7111
-
-eureka:
-  password: password
-  client:
-    serviceUrl:
-      defaultZone: http://user:${eureka.password}@localhost:8761/eureka/,http://user:${eureka.password}@localhost:8762/eureka/
-  instance:
-    leaseRenewalIntervalInSeconds: 10
-    metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
