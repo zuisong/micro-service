@@ -1,12 +1,12 @@
+server:
+  port: 7111
+
 spring:
   application:
-    name: HelloServer
+    name: hello-server
   cloud:
     config:
       fail-fast: on
       uri: http://localhost:8888
   profiles:
     active: dev
-
-server:
-  port: 7111

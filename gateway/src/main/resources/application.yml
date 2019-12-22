@@ -1,35 +1,11 @@
 server:
   port: 5555
 
-eureka:
-  password: password
-  client:
-    serviceUrl:
-      defaultZone: http://user:${eureka.password}@localhost:8761/eureka/,http://user:${eureka.password}@localhost:8762/eureka/
-  instance:
-    leaseRenewalIntervalInSeconds: 10
-    metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
 spring:
-  application:
-    name: GatewayServer
+  profiles:
+    active: dev
   cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: on
-          lower-case-service-id: on
-      routes:
-        - id: helloserver
-          uri: lb://HELLOSERVER
-          predicates:
-            - Path=/helloserver/**
-          filters:
-            - StripPrefix=1
-        - id: hello-client
-          uri: lb://HELLOCLIENT
-          predicates:
-            - Path=/hello-client/**
-          filters:
-            - StripPrefix=1
-
+    config:
+      uri: http://localhost:8888
+  application:
+    name: gateway

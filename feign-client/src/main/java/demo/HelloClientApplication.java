@@ -31,14 +31,16 @@ public class HelloClientApplication {
         return user.toString();
     }
 
-    @FeignClient("HELLOSERVER")
+    @FeignClient("HELLO-SERVER")
     interface HelloClient {
-        @RequestMapping(value = "/get", method = RequestMethod.GET)
+
         @ResponseBody
+        @RequestMapping(value = "/get", method = RequestMethod.GET)
         User hello1(@RequestParam("name") String name);
 
-        @RequestMapping(value = "/post", method = RequestMethod.POST)
         @ResponseBody
+        @RequestMapping(value = "/post", method = RequestMethod.POST)
         User hello2(@RequestParam("name") String name);
+
     }
 }
