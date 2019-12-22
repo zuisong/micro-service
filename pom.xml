@@ -3,19 +3,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.test</groupId>
-    <artifactId>feign-eureka</artifactId>
+    <groupId>cn.mmooo</groupId>
+    <artifactId>micro-service</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-
     <modules>
-        <module>eureka2</module>
-        <module>feign-client</module>
-        <module>feign-server</module>
-        <module>gateway</module>
-        <module>config-server</module>
+        <module>micro-service-eureka-service</module>
+        <module>micro-service-config-server</module>
+        <module>micro-service-gateway-server</module>
+        <module>micro-service-hello-client</module>
+        <module>micro-service-hello-server</module>
     </modules>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+        <kotlin.version>1.3.61</kotlin.version>
+        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+    </properties>
+
 
     <dependencyManagement>
         <dependencies>
@@ -23,7 +32,7 @@
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-bom</artifactId>
-                <version>1.3.61</version>
+                <version>${kotlin.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -31,7 +40,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.RELEASE</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -47,13 +56,6 @@
         </dependencies>
 
     </dependencyManagement>
-
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -99,7 +101,7 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
-
+                <version>${kotlin.version}</version>
                 <executions>
                     <execution>
                         <id>compile</id>
