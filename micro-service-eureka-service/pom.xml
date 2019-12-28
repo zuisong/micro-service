@@ -6,7 +6,6 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <groupId>cn.mmooo</groupId>
     <artifactId>micro-service-eureka-service</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
@@ -44,6 +43,10 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
     </dependencies>

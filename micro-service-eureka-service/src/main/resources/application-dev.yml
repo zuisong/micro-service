@@ -4,12 +4,11 @@ server:
 spring:
   application:
     name: registry2
-  security:
-    user:
-      name: admin
-      password: admin
 
 eureka:
+  security:
+    username: admin
+    password: admin
   instance:
     metadata-map:
       cluster: demo-cluster
@@ -21,7 +20,7 @@ eureka:
     fetchRegistry: false
     # 表示是否从eureka服务器获取注册信息，同上，这里不需要
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ #是设置eureka服务器所在的地址，查询服务和注册服务都需要依赖这个地址
+      defaultZone: http://${eureka.security.username}:${eureka.security.password}@${eureka.instance.hostname}:${server.port}/eureka/ #是设置eureka服务器所在的地址，查询服务和注册服务都需要依赖这个地址
   server:
     waitTimeInMsWhenSyncEmpty: 0
     enableSelfPreservation: false

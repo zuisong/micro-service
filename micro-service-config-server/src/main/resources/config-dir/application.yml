@@ -1,10 +1,9 @@
 eureka:
+  security:
+    username: admin
+    password: admin
   client:
-    security:
-      basic:
-        user: admin
-        password: admin
     serviceUrl:
-      defaultZone: http://127.0.0.1:8762/eureka/
+      defaultZone: http://${eureka.security.username}:${eureka.security.password}@127.0.0.1:8762/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 10

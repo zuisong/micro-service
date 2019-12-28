@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author Spencer Gibb
+ *
  */
 @SpringBootApplication
 @EnableDiscoveryClient

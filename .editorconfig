@@ -3,8 +3,8 @@ root = true
 [*]
 # 代码统一编码为 utf-8
 charset                                             = utf-8
-# 换行符为crlf
-end_of_line                                         = crlf
+# 换行符为lf
+end_of_line                                         = lf
 # 默认缩进 4
 indent_size                                         = 4
 # 默认缩进方式使用空格
