@@ -1,33 +1,33 @@
 package demo;
 
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.annotation.Order;
+import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.*;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.cloud.gateway.route.*;
+import org.springframework.context.annotation.*;
+import org.springframework.core.annotation.*;
 
 @SpringBootApplication
 public class GatewayApplication {
-    @Autowired
-    RouteDefinitionRepository routeDefinitionRepository;
+  @Autowired
+  private RouteDefinitionRepository routeDefinitionRepository;
 
-    public static void main(String[] args) {
-        SpringApplication.run(GatewayApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(GatewayApplication.class, args);
+  }
 
 
-    @Bean
-    @Order
-    public InitializingBean init(MyConfig config) {
+  @Bean
+  @Order
+  public InitializingBean init(MyConfig config) {
 
-        return () -> {
-            System.out.println(config.getMyName());
-            routeDefinitionRepository.getRouteDefinitions()
-                .subscribe(it -> {
-                    System.out.println(it);
-                });
-        };
-    }
+    return () -> {
+      System.out.println(config.getMyName());
+      routeDefinitionRepository.getRouteDefinitions()
+        .subscribe(it -> {
+          System.out.println(it);
+        });
+    };
+  }
 }

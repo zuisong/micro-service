@@ -1,14 +1,11 @@
 package demo;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@lombok.Data
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
-    private String name;
-    private String password;
-
-
+  private String name;
+  private String password;
 }
