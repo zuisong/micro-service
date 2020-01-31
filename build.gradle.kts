@@ -27,12 +27,14 @@ allprojects {
   }
 
   apply(plugin = "java")
-
-
   apply(plugin = "org.jetbrains.kotlin.jvm")
+  apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+
   apply(plugin = "com.github.ben-manes.versions")
   apply(plugin = "se.patrikerdes.use-latest-versions")
-  apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+
+
+
 
   dependencies {
     val api by configurations
@@ -41,6 +43,7 @@ allprojects {
     api(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE"))
     api(platform("org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE"))
     api("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
+
     api("org.projectlombok:lombok:1.18.10")
     annotationProcessor("org.projectlombok:lombok:1.18.10")
   }
@@ -93,4 +96,8 @@ allprojects {
     reportfileName = "report"
   }
 
+
 }
+
+
+

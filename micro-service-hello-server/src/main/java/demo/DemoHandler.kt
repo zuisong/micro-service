@@ -1,30 +1,29 @@
-package demo;
+package demo
 
-import org.springframework.web.bind.annotation.*;
+import demo.bean.*
+import org.springframework.web.bind.annotation.*
 
 @RestController
-public class DemoHandler {
-
+class DemoHandler {
   @GetMapping("/get")
-  public User hello1(@RequestParam("name") String name) {
+  fun hello1(@RequestParam("name") name: String?): User {
     //ServiceInstance localInstance = client.getLocalServiceInstance();
     // return "Hello " + name + ": " + localInstance.getServiceId() + ":" +
     // localInstance.getHost() + ":"
     // + localInstance.getPort();
-    User user = new User(name, "Hello World");
-    System.out.println(user);
-    return user;
+    val user = User(name, "Hello World")
+    println(user)
+    return user
   }
 
   @PostMapping("/post")
-  public User hello2(@RequestParam("name") String name) {
+  fun hello2(@RequestParam("name") name: String?): User {
     //ServiceInstance localInstance = client.getLocalServiceInstance();
     // return "Hello " + name + ": " + localInstance.getServiceId() + ":" +
     // localInstance.getHost() + ":"
     // + localInstance.getPort();
-    User user = new User(name, "Hello World");
-    System.out.println(user);
-    return user;
+    val user = User(name, "Hello World")
+    println(user)
+    return user
   }
-
 }
