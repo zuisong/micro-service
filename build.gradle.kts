@@ -11,29 +11,10 @@ buildscript {
   }
 }
 
-
-
-allprojects {
-
-  group = "cn.mmooo"
-  version = "1.0.0"
-
-  repositories {
-    mavenLocal()
-    maven("https://maven.aliyun.com/repository/central/")
-    maven("https://mirrors.huaweicloud.com/repository/maven/")
-    maven("http://repo.maven.apache.org/maven2")
-    jcenter()
-  }
-
+subprojects {
   apply(plugin = "java")
   apply(plugin = "org.jetbrains.kotlin.jvm")
   apply(plugin = "org.jetbrains.kotlin.plugin.spring")
-
-  apply(plugin = "com.github.ben-manes.versions")
-  apply(plugin = "se.patrikerdes.use-latest-versions")
-
-
 
 
   dependencies {
@@ -71,6 +52,25 @@ allprojects {
   tasks.withType<Test> {
     useJUnitPlatform { }
   }
+
+}
+
+allprojects {
+
+  group = "cn.mmooo"
+  version = "1.0.0"
+
+  repositories {
+    mavenLocal()
+    maven("https://maven.aliyun.com/repository/central/")
+    maven("https://mirrors.huaweicloud.com/repository/maven/")
+    maven("http://repo.maven.apache.org/maven2")
+    jcenter()
+  }
+
+
+  apply(plugin = "com.github.ben-manes.versions")
+  apply(plugin = "se.patrikerdes.use-latest-versions")
 
   tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
     resolutionStrategy {

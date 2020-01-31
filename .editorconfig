@@ -27,6 +27,7 @@ ij_formatter_tags_enabled                           = true
 ij_any_wrap_long_lines                              = false
 
 ij_any_blank_lines_around_method_in_interface       = 1
+
 # if for do-while while 强制使用大括号
 ij_any_if_brace_force                               = always
 ij_any_for_brace_force                              = always
@@ -48,6 +49,7 @@ ij_any_align_multiline_parenthesized_expression     = false
 ij_any_align_consecutive_assignments                = true
 ij_any_align_consecutive_variable_declarations      = true
 ij_any_align_group_field_declarations               = true
+
 # 保持简单的代码可以在一行
 ij_any_keep_simple_classes_in_one_line              = true
 ij_any_keep_simple_blocks_in_one_line               = true
