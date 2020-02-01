@@ -20,12 +20,14 @@ subprojects {
   dependencies {
     val api by configurations
     val annotationProcessor by configurations
+    val compileOnly by configurations
     api(kotlin("stdlib-jdk8"))
+    api(kotlin("reflect"))
     api(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE"))
     api(platform("org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE"))
     api("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
-
-    api("org.projectlombok:lombok:1.18.10")
+    api("com.fasterxml.jackson.module:jackson-module-kotlin")
+    compileOnly("org.projectlombok:lombok:1.18.10")
     annotationProcessor("org.projectlombok:lombok:1.18.10")
   }
 
@@ -38,8 +40,8 @@ subprojects {
   }
 
   tasks.withType<JavaCompile> {
-    sourceCompatibility = JavaVersion.VERSION_1_8.toString()
-    targetCompatibility = JavaVersion.VERSION_1_8.toString()
+    sourceCompatibility = JavaVersion.VERSION_11.toString()
+    targetCompatibility = JavaVersion.VERSION_11.toString()
     with(options) {
       isFork = true
       encoding = "UTF-8"
@@ -68,7 +70,6 @@ allprojects {
     jcenter()
   }
 
-
   apply(plugin = "com.github.ben-manes.versions")
   apply(plugin = "se.patrikerdes.use-latest-versions")
 
@@ -96,8 +97,4 @@ allprojects {
     reportfileName = "report"
   }
 
-
 }
-
-
-

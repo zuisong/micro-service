@@ -10,13 +10,13 @@ spring:
           lower-case-service-id: true
       routes:
         - id: hello-server
-          uri: lb://HELLO-SERVER
+          uri: lb://hello-server
           predicates:
             - Path=/hello-server/**
           filters:
             - StripPrefix=1
         - id: hello-client
-          uri: lb://HELLO-CLIENT
+          uri: lb://hello-client
           predicates:
             - Path=/hello-client/**
           filters:
