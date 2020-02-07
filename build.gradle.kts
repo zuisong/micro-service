@@ -23,12 +23,16 @@ subprojects {
     val compileOnly by configurations
     api(kotlin("stdlib-jdk8"))
     api(kotlin("reflect"))
+
+    api(platform(kotlin("bom")))
     api(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE"))
-    api(platform("org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE"))
+    api(platform("org.springframework.boot:spring-boot-dependencies:2.3.0.M1"))
+    api(platform("com.fasterxml.jackson:jackson-bom:2.10.2.20200130"))
+
     api("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
     api("com.fasterxml.jackson.module:jackson-module-kotlin")
-    compileOnly("org.projectlombok:lombok:1.18.10")
-    annotationProcessor("org.projectlombok:lombok:1.18.10")
+    compileOnly("org.projectlombok:lombok:1.18.12")
+    annotationProcessor("org.projectlombok:lombok:1.18.12")
   }
 
   tasks.withType<JavaCompile> {
