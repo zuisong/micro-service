@@ -3,7 +3,7 @@ buildscript {
     maven(url = "https://plugins.gradle.org/m2/")
   }
   dependencies {
-    val kotlin_version = "1.3.61"
+    val kotlin_version = "1.3.70"
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlin_version")
     classpath("se.patrikerdes:gradle-use-latest-versions-plugin:0.2.13")
@@ -26,8 +26,8 @@ subprojects {
 
     api(platform(kotlin("bom")))
     api(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE"))
-    api(platform("org.springframework.boot:spring-boot-dependencies:2.3.0.M1"))
-    api(platform("com.fasterxml.jackson:jackson-bom:2.10.2.20200130"))
+    api(platform("org.springframework.boot:spring-boot-dependencies:2.3.0.M3"))
+    api(platform("com.fasterxml.jackson:jackson-bom:2.10.3"))
 
     api("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
     api("com.fasterxml.jackson.module:jackson-module-kotlin")
