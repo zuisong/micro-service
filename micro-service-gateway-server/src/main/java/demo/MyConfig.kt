@@ -1,13 +1,10 @@
-package demo;
+package demo
 
-import lombok.*;
-import org.springframework.boot.context.properties.*;
-import org.springframework.stereotype.*;
+import org.springframework.boot.context.properties.*
+import org.springframework.stereotype.*
 
-@Data
 @Component
 @ConfigurationProperties("my-config")
-public class MyConfig {
-
-  private String myName;
-}
+data class MyConfig(
+  var myName: String? = null
+)

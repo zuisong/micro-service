@@ -25,7 +25,7 @@ subprojects {
     api(kotlin("reflect"))
 
     api(platform(kotlin("bom")))
-    api(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE"))
+    api(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3"))
     api(platform("org.springframework.boot:spring-boot-dependencies:2.3.0.M3"))
     api(platform("com.fasterxml.jackson:jackson-bom:2.10.3"))
 

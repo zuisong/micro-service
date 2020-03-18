@@ -1,13 +1,23 @@
-package demo;
+package demo
 
-import org.springframework.boot.*;
-import org.springframework.cloud.client.*;
-import org.springframework.cloud.config.server.*;
+import org.springframework.boot.*
+import org.springframework.boot.autoconfigure.*
+import org.springframework.cloud.config.server.*
 
+
+/**
+ * Hello world!
+ *
+ * @author Chen
+ */
+@SpringBootApplication
 @EnableConfigServer
-@SpringCloudApplication
-public class ConfigServerApplication {
-  public static void main(String[] args) {
-    SpringApplication.run(ConfigServerApplication.class, args);
+class ConfigServerApplication : CommandLineRunner {
+  override fun run(vararg args: String?) {
+    println("---------- application started")
   }
+}
+
+fun main(args: Array<String>) {
+  SpringApplication.run(ConfigServerApplication::class.java, *args)
 }

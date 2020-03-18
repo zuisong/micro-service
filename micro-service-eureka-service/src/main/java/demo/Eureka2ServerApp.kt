@@ -1,10 +1,9 @@
-package demo;
+package demo
 
-import org.springframework.boot.*;
-import org.springframework.boot.autoconfigure.*;
-import org.springframework.cloud.netflix.eureka.server.*;
-
-import java.lang.invoke.*;
+import org.springframework.boot.*
+import org.springframework.boot.autoconfigure.*
+import org.springframework.cloud.netflix.eureka.server.*
+import java.lang.invoke.*
 
 /**
  * Hello world!
@@ -13,8 +12,12 @@ import java.lang.invoke.*;
  */
 @SpringBootApplication
 @EnableEurekaServer
-public class Eureka2ServerApp {
-  public static void main(String[] args) {
-    SpringApplication.run(MethodHandles.lookup().lookupClass(), args);
+class Eureka2ServerApp : CommandLineRunner {
+  override fun run(vararg args: String?) {
+    println("---------- application started")
   }
+}
+
+fun main(args: Array<String>) {
+  SpringApplication.run(Eureka2ServerApp::class.java, *args)
 }

@@ -1,33 +1,28 @@
-package demo;
+package demo
 
-import org.springframework.beans.factory.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.boot.*;
-import org.springframework.boot.autoconfigure.*;
-import org.springframework.cloud.gateway.route.*;
-import org.springframework.context.annotation.*;
-import org.springframework.core.annotation.*;
+import org.springframework.beans.factory.annotation.*
+import org.springframework.boot.*
+import org.springframework.boot.autoconfigure.*
+import org.springframework.cloud.gateway.route.*
 
 @SpringBootApplication
-public class GatewayApplication {
+class GatewayApplication : CommandLineRunner {
   @Autowired
-  private RouteDefinitionRepository routeDefinitionRepository;
+  private lateinit var routeDefinitionRepository: RouteDefinitionRepository
 
-  public static void main(String[] args) {
-    SpringApplication.run(GatewayApplication.class, args);
+  @Autowired
+  private lateinit var config: MyConfig
+
+  override fun run(vararg args: String?) {
+
+    println(config.myName)
+    routeDefinitionRepository
+      .routeDefinitions
+      .subscribe { println(it) }
   }
 
+}
 
-  @Bean
-  @Order
-  public InitializingBean init(MyConfig config) {
-
-    return () -> {
-      System.out.println(config.getMyName());
-      routeDefinitionRepository.getRouteDefinitions()
-        .subscribe(it -> {
-          System.out.println(it);
-        });
-    };
-  }
+fun main(args: Array<String>) {
+  SpringApplication.run(GatewayApplication::class.java, *args)
 }
