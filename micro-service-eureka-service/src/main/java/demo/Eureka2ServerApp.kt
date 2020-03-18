@@ -3,7 +3,6 @@ package demo
 import org.springframework.boot.*
 import org.springframework.boot.autoconfigure.*
 import org.springframework.cloud.netflix.eureka.server.*
-import java.lang.invoke.*
 
 /**
  * Hello world!
