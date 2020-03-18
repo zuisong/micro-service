@@ -3,11 +3,11 @@ buildscript {
     maven(url = "https://plugins.gradle.org/m2/")
   }
   dependencies {
+    @Suppress("LocalVariableName")
     val kotlin_version = "1.3.70"
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlin_version")
-    classpath("se.patrikerdes:gradle-use-latest-versions-plugin:0.2.13")
-    classpath("com.github.ben-manes:gradle-versions-plugin:0.27.0")
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.5.RELEASE")
   }
 }
 
@@ -26,7 +26,7 @@ subprojects {
 
     api(platform(kotlin("bom")))
     api(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3"))
-    api(platform("org.springframework.boot:spring-boot-dependencies:2.3.0.M3"))
+    api(platform("org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE"))
     api(platform("com.fasterxml.jackson:jackson-bom:2.10.3"))
 
     api("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
@@ -72,33 +72,6 @@ allprojects {
     maven("https://mirrors.huaweicloud.com/repository/maven/")
     maven("http://repo.maven.apache.org/maven2")
     jcenter()
-  }
-
-  apply(plugin = "com.github.ben-manes.versions")
-  apply(plugin = "se.patrikerdes.use-latest-versions")
-
-  tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
-    resolutionStrategy {
-      componentSelection {
-        all {
-          val rejected = listOf(
-            "alpha",
-            "beta",
-            "snapshots",
-            "preview",
-            "eap")
-            .any { candidate.version.contains(it, true) }
-          if (rejected) {
-            reject("Release candidate")
-          }
-        }
-      }
-    }
-// optional parameters
-    checkForGradleUpdate = true
-    outputFormatter = "json"
-    outputDir = "build/dependencyUpdates"
-    reportfileName = "report"
   }
 
 }

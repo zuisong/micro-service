@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.*
 import org.springframework.boot.*
 import org.springframework.boot.autoconfigure.*
 import org.springframework.cloud.gateway.route.*
+import kotlin.streams.*
 
 @SpringBootApplication
 class GatewayApplication : CommandLineRunner {
@@ -16,9 +17,14 @@ class GatewayApplication : CommandLineRunner {
   override fun run(vararg args: String?) {
 
     println(config.myName)
-    routeDefinitionRepository
-      .routeDefinitions
-      .subscribe { println(it) }
+    val list =
+      routeDefinitionRepository
+        .routeDefinitions
+        .toStream()
+        .toList()
+
+    println(list)
+
   }
 
 }
