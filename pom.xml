@@ -250,22 +250,24 @@
             <configuration>
               <target>
                 <taskdef
-                  resource="net/sf/antcontrib/antcontrib.properties"/>
+                  resource="net/sf/antcontrib/antlib.xml"/>
                 <echo message="os is abc"/>
+                <var name="root_dir" value="${basedir}"/>
                 <if>
-                  <available property="file.exist" file="build.xml" filepath="${basedir}" type="file"/>
+                  <not>
+                    <available
+                      file="build.xml" filepath="${root_dir}"
+                      type="file"/>
+                  </not>
                   <then>
-                    <property name="root_dir" value="${basedir}"/>
+                    <var name="root_dir" value="${root_dir}/../"/>
                   </then>
-                  <else>
-                    <property name="root_dir" value="${basedir}/../"/>
-                  </else>
                 </if>
-                <ant antfile="build.xml"
-                     dir="${root_dir}"
+                <echo message="${root_dir}"/>
+                <ant antfile="${root_dir}/build.xml"
                      inheritrefs="true"
                      inheritall="true"
-                     target="-target2"/>
+                     target="-default"/>
               </target>
             </configuration>
             <goals>
