@@ -19,11 +19,11 @@
 
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <file.encoding>UTF-8</file.encoding>
     <java.version>11</java.version>
-    <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
     <kotlin.version>1.3.70</kotlin.version>
     <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+    <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
   </properties>
 
 
@@ -117,6 +117,16 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
+        <configuration>
+          <compilerId>eclipse</compilerId>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-compiler-eclipse</artifactId>
+            <version>2.8.6</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
@@ -218,6 +228,8 @@
               <goal>timestamp-property</goal>
             </goals>
             <configuration>
+              <locale>zh-CN</locale>
+              <timeZone>GMT+8</timeZone>
               <name>NOW-yyyy-MM-dd-HH-mm</name>
               <pattern>yyyy-MM-dd-HH-mm</pattern>
             </configuration>
@@ -249,9 +261,23 @@
             <phase>compile</phase>
             <configuration>
               <target>
-                <taskdef
-                  resource="net/sf/antcontrib/antlib.xml"/>
-                <echo message="os is abc"/>
+                <taskdef resource="net/sf/antcontrib/antlib.xml"/>
+
+                <!-- mvn clean compile -Dconfig=test 设置值 -->
+                <echo>--- input env = ${config}</echo>
+                <var name="profile" value="${config}"/>
+                <if>
+                  <not>
+                    <!--如果没有设置config变量-->
+                    <isset property="config"/>
+                  </not>
+                  <then>
+                    <!--默认 dev 环境-->
+                    <var name="profile" value="dev"/>
+                  </then>
+                </if>
+                <echo>--- active env = ${profile}</echo>
+
                 <var name="root_dir" value="${basedir}"/>
                 <if>
                   <not>
@@ -289,8 +315,8 @@
           </dependency>
           <dependency>
             <groupId>org.apache.ant</groupId>
-            <artifactId>ant-nodeps</artifactId>
-            <version>1.8.1</version>
+            <artifactId>ant</artifactId>
+            <version>1.10.7</version>
           </dependency>
         </dependencies>
       </plugin>
