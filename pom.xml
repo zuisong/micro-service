@@ -19,9 +19,10 @@
 
 
   <properties>
+    <maven.version>3.6.1</maven.version>
     <file.encoding>UTF-8</file.encoding>
     <java.version>11</java.version>
-    <kotlin.version>1.3.70</kotlin.version>
+    <kotlin.version>1.3.71</kotlin.version>
     <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
   </properties>
@@ -29,29 +30,31 @@
 
   <repositories>
     <repository>
-      <id>alimaven</id>
-      <name>aliyun maven</name>
-      <url>https://maven.aliyun.com/repository/public</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
+      <id>huawei</id>
+      <name>huawei</name>
+      <layout>default</layout>
+      <url>https://mirrors.huaweicloud.com/repository/maven/</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
     </repository>
   </repositories>
 
   <pluginRepositories>
     <pluginRepository>
-      <id>alimaven</id>
-      <name>aliyun maven</name>
-      <url>https://maven.aliyun.com/repository/public</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
+      <id>huawei</id>
+      <name>huawei</name>
+      <layout>default</layout>
+      <url>https://mirrors.huaweicloud.com/repository/maven/</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
     </pluginRepository>
   </pluginRepositories>
 
@@ -126,6 +129,14 @@
       </plugin>
 
       <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <verbose>true</verbose>
+        </configuration>
+      </plugin>
+
+      <plugin>
         <artifactId>maven-deploy-plugin</artifactId>
         <version>2.8.2</version>
       </plugin>
@@ -134,15 +145,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <compilerId>eclipse</compilerId>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-compiler-eclipse</artifactId>
-            <version>2.8.6</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
@@ -220,6 +223,21 @@
             </configuration>
           </execution>
 
+          <!-- 添加测试源码目录 -->
+          <execution>
+            <id>add-test-source</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/test/java</source>
+                <source>src/test/kotlin</source>
+              </sources>
+            </configuration>
+          </execution>
+
           <execution>
             <id>parse-version</id>
             <goals>
@@ -251,20 +269,6 @@
             </configuration>
           </execution>
 
-          <!-- 添加测试源码目录 -->
-          <execution>
-            <id>add-test-source</id>
-            <phase>initialize</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>src/test/java</source>
-                <source>src/test/kotlin</source>
-              </sources>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
 
