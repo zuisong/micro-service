@@ -16,17 +16,7 @@ class GatewayApplication : CommandLineRunner {
 
   override fun run(vararg args: String?) {
 
-    println(config.myName)
-    val list =
-      routeDefinitionRepository
-        .routeDefinitions
-        .toStream()
-        .toList()
-
-    println(list)
-
   }
-
 }
 
 fun main(args: Array<String>) {
