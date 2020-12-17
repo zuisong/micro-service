@@ -10,7 +10,7 @@
   <parent>
     <groupId>cn.mmooo</groupId>
     <artifactId>micro-service</artifactId>
-    <version>1.0.0</version>
+    <version>${revision}</version>
   </parent>
 
 

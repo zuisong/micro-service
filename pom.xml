@@ -5,7 +5,7 @@
 
   <groupId>cn.mmooo</groupId>
   <artifactId>micro-service</artifactId>
-  <version>1.0.0</version>
+  <version>${revision}</version>
   <packaging>pom</packaging>
 
   <modules>
@@ -19,12 +19,13 @@
 
 
   <properties>
+    <revision>1.0.1</revision>
     <maven.version>3.6.1</maven.version>
     <file.encoding>UTF-8</file.encoding>
     <java.version>1.8</java.version>
-    <kotlin.version>1.4.0-rc</kotlin.version>
-    <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
-    <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+    <kotlin.version>1.4.21</kotlin.version>
+    <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+    <spring-boot.version>2.4.1</spring-boot.version>
   </properties>
 
 
