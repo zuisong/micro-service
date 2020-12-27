@@ -1,3 +1,15 @@
+server:
+  port: 5555
+
 spring:
   profiles:
     active: dev
+
+  application:
+    name: gateway
+
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: on
+      profile: dev
