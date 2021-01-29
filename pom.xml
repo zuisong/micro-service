@@ -24,7 +24,7 @@
     <file.encoding>UTF-8</file.encoding>
     <java.version>1.8</java.version>
     <kotlin.version>1.4.21</kotlin.version>
-    <spring-cloud.version>2020.0.0</spring-cloud.version>
+    <spring-cloud.version>2020.0.1</spring-cloud.version>
     <spring-boot.version>2.4.2</spring-boot.version>
   </properties>
 
@@ -274,77 +274,6 @@
 
         </executions>
       </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.8</version>
-        <executions>
-          <execution>
-            <id>default-cli</id>
-            <phase>compile</phase>
-            <configuration>
-              <target>
-                <taskdef resource="net/sf/antcontrib/antlib.xml"/>
-
-                <!-- mvn clean compile -Dconfig=test 设置值 -->
-                <echo>--- input env = ${config}</echo>
-                <var name="profile" value="${config}"/>
-                <if>
-                  <not>
-                    <!--如果没有设置config变量-->
-                    <isset property="config"/>
-                  </not>
-                  <then>
-                    <!--默认 dev 环境-->
-                    <var name="profile" value="dev"/>
-                  </then>
-                </if>
-                <echo>--- active env = ${profile}</echo>
-
-                <var name="root_dir" value="${basedir}"/>
-                <if>
-                  <not>
-                    <available
-                      file="build.xml" filepath="${root_dir}"
-                      type="file"/>
-                  </not>
-                  <then>
-                    <var name="root_dir" value="${root_dir}/../"/>
-                  </then>
-                </if>
-                <echo message="${root_dir}"/>
-                <ant antfile="${root_dir}/build.xml"
-                     inheritrefs="true"
-                     inheritall="true"
-                     target="-default"/>
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>ant-contrib</groupId>
-            <artifactId>ant-contrib</artifactId>
-            <version>1.0b3</version>
-            <exclusions>
-              <exclusion>
-                <groupId>ant</groupId>
-                <artifactId>ant</artifactId>
-              </exclusion>
-            </exclusions>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.ant</groupId>
-            <artifactId>ant</artifactId>
-            <version>1.10.8</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-
     </plugins>
   </build>
 

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.*
 import org.springframework.boot.*
 import org.springframework.boot.autoconfigure.*
 import org.springframework.cloud.gateway.route.*
-import kotlin.streams.*
 
 @SpringBootApplication
 class GatewayApplication : CommandLineRunner {

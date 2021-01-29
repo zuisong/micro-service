@@ -3,6 +3,7 @@ eureka:
     username: admin
     password: admin
   client:
+    registry-fetch-interval-seconds: 5
     serviceUrl:
       defaultZone: http://${eureka.security.username}:${eureka.security.password}@127.0.0.1:8762/eureka/
   instance:
