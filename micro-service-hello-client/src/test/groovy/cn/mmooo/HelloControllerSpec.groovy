@@ -16,7 +16,7 @@ class HelloControllerSpec extends Specification {
   def "test2"() {
     expect:
     Thread.sleep(1000)
-    println("=--= hello test2 " + LocalDateTime.now())
+    println("=--========== hello test2 " + LocalDateTime.now())
     true
   }
 

@@ -12,13 +12,7 @@
     <artifactId>micro-service</artifactId>
     <version>${revision}</version>
   </parent>
-
-
   <dependencies>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-bootstrap</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>org.springframework.cloud</groupId>
