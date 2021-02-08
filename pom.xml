@@ -7,7 +7,6 @@
   <artifactId>micro-service</artifactId>
   <version>${revision}</version>
   <packaging>pom</packaging>
-
   <modules>
     <module>micro-service-eureka-service</module>
     <module>micro-service-config-server</module>
