@@ -23,7 +23,7 @@
     <java.version>1.8</java.version>
     <kotlin.version>1.4.31</kotlin.version>
     <spring-cloud.version>2020.0.1</spring-cloud.version>
-    <spring-boot.version>2.4.2</spring-boot.version>
+    <spring-boot.version>2.4.3</spring-boot.version>
     <groovy.version>3.0.7</groovy.version>
     <spock-bom.version>2.0-M4-groovy-3.0</spock-bom.version>
     <jackson-bom.version>2.12.1</jackson-bom.version>
