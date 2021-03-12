@@ -21,7 +21,7 @@
     <maven.version>3.6.1</maven.version>
     <file.encoding>UTF-8</file.encoding>
     <java.version>1.8</java.version>
-    <kotlin.version>1.4.21</kotlin.version>
+    <kotlin.version>1.4.31</kotlin.version>
     <spring-cloud.version>2020.0.1</spring-cloud.version>
     <spring-boot.version>2.4.2</spring-boot.version>
     <groovy.version>3.0.7</groovy.version>
@@ -233,6 +233,34 @@
           <finalName>${project.artifactId}</finalName>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>1.2.7</version>
+        <configuration>
+          <flattenMode>clean</flattenMode>
+        </configuration>
+        <executions>
+          <!-- enable flattening -->
+          <execution>
+            <id>flatten</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+          <!-- ensure proper cleanup -->
+          <execution>
+            <id>clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
 
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
