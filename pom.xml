@@ -292,6 +292,7 @@
         <configuration>
           <compilerPlugins>
             <plugin>spring</plugin>
+            <plugin>noarg</plugin>
           </compilerPlugins>
           <jvmTarget>${java.version}</jvmTarget>
         </configuration>
