@@ -21,12 +21,12 @@
     <maven.version>3.6.1</maven.version>
     <file.encoding>UTF-8</file.encoding>
     <java.version>1.8</java.version>
-    <kotlin.version>1.4.31</kotlin.version>
-    <spring-cloud.version>2020.0.1</spring-cloud.version>
-    <spring-boot.version>2.4.3</spring-boot.version>
-    <groovy.version>3.0.7</groovy.version>
-    <spock-bom.version>2.0-M4-groovy-3.0</spock-bom.version>
-    <jackson-bom.version>2.12.1</jackson-bom.version>
+    <kotlin.version>1.5.10</kotlin.version>
+    <spring-cloud.version>2020.0.2</spring-cloud.version>
+    <spring-boot.version>2.5.0</spring-boot.version>
+    <groovy.version>3.0.8</groovy.version>
+    <spock-bom.version>2.0-groovy-3.0</spock-bom.version>
+    <jackson-bom.version>2.12.2</jackson-bom.version>
   </properties>
 
 
@@ -85,8 +85,10 @@
 
       <dependency>
         <groupId>org.codehaus.groovy</groupId>
-        <artifactId>groovy</artifactId>
+        <artifactId>groovy-bom</artifactId>
         <version>${groovy.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
       <dependency>
@@ -288,11 +290,16 @@
             <artifactId>kotlin-maven-allopen</artifactId>
             <version>${kotlin.version}</version>
           </dependency>
+          <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-maven-noarg</artifactId>
+            <version>${kotlin.version}</version>
+          </dependency>
         </dependencies>
         <configuration>
           <compilerPlugins>
             <plugin>spring</plugin>
-            <plugin>noarg</plugin>
+            <plugin>no-arg</plugin>
           </compilerPlugins>
           <jvmTarget>${java.version}</jvmTarget>
         </configuration>
