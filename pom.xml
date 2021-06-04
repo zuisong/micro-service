@@ -22,11 +22,12 @@
     <file.encoding>UTF-8</file.encoding>
     <java.version>1.8</java.version>
     <kotlin.version>1.5.10</kotlin.version>
-    <spring-cloud.version>2020.0.2</spring-cloud.version>
+    <spring-cloud.version>2020.0.3</spring-cloud.version>
     <spring-boot.version>2.5.0</spring-boot.version>
     <groovy.version>3.0.8</groovy.version>
     <spock-bom.version>2.0-groovy-3.0</spock-bom.version>
     <jackson-bom.version>2.12.2</jackson-bom.version>
+    <junit-bom.version>5.7.2</junit-bom.version>
   </properties>
 
 
@@ -63,6 +64,14 @@
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-bom</artifactId>
         <version>${kotlin.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit-bom.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -131,7 +140,7 @@
 
     <dependency>
       <groupId>org.spockframework</groupId>
-      <artifactId>spock-core</artifactId>
+      <artifactId>spock-spring</artifactId>
       <scope>test</scope>
     </dependency>
 
