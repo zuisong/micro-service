@@ -1,10 +1,10 @@
 package demo
 
 import demo.bean.*
+import jakarta.validation.*
+import jakarta.validation.constraints.*
 import org.springframework.validation.annotation.*
 import org.springframework.web.bind.annotation.*
-import javax.validation.*
-import javax.validation.constraints.*
 
 
 @RestController

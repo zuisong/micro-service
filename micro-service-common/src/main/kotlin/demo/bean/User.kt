@@ -1,6 +1,6 @@
 package demo.bean
 
-import javax.validation.constraints.*
+import jakarta.validation.constraints.*
 
 
 data class User(

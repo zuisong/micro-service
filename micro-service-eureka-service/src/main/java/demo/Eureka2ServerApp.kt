@@ -18,5 +18,7 @@ class Eureka2ServerApp : CommandLineRunner {
 }
 
 fun main(args: Array<String>) {
+
+
   SpringApplication.run(Eureka2ServerApp::class.java, *args)
 }

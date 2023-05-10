@@ -1,6 +1,7 @@
 package demo
 
 import feign.*
+import jakarta.validation.*
 import org.hibernate.validator.*
 import org.springframework.beans.factory.annotation.*
 import org.springframework.boot.*
@@ -10,7 +11,6 @@ import org.springframework.cloud.openfeign.*
 import org.springframework.context.annotation.*
 import org.springframework.validation.beanvalidation.*
 import org.springframework.web.bind.annotation.*
-import javax.validation.*
 
 
 fun main(args: Array<String>) {

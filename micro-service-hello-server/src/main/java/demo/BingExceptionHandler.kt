@@ -1,13 +1,13 @@
 package demo
 
+import jakarta.servlet.http.*
+import jakarta.validation.*
 import org.slf4j.*
 import org.springframework.http.*
 import org.springframework.validation.*
 import org.springframework.web.bind.annotation.*
 import java.lang.invoke.*
 import java.util.*
-import javax.servlet.http.*
-import javax.validation.*
 
 
 @ControllerAdvice

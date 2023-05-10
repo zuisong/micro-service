@@ -12,5 +12,5 @@ interface HelloServerClient {
 
   @ResponseBody
   @RequestMapping(value = ["/post"], method = [RequestMethod.POST])
-  fun hello2(@RequestParam("name") name: String?): User?
+  fun hello2(@RequestParam("name") name: String ,@RequestParam age: Int ): User?
 }

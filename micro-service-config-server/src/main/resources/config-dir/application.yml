@@ -8,3 +8,11 @@ eureka:
       defaultZone: http://${eureka.security.username}:${eureka.security.password}@127.0.0.1:8762/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 10
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
