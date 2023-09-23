@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*
 
 
 fun main(args: Array<String>) {
-  SpringApplication.run(HelloServerApplication::class.java, *args)
+  runApplication<HelloServerApplication>(*args)
 }
 
 

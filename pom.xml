@@ -20,13 +20,13 @@
     <revision>1.0.1</revision>
     <file.encoding>UTF-8</file.encoding>
     <java.version>17</java.version>
-    <kotlin.version>1.8.20</kotlin.version>
-    <spring-cloud.version>2022.0.2</spring-cloud.version>
-    <spring-boot.version>3.0.6</spring-boot.version>
+    <kotlin.version>1.9.10</kotlin.version>
+    <spring-cloud.version>2022.0.4</spring-cloud.version>
+    <spring-boot.version>3.1.4</spring-boot.version>
     <groovy.version>4.0.12</groovy.version>
     <spock-bom.version>2.4-M1-groovy-4.0</spock-bom.version>
-    <jackson-bom.version>2.15.0</jackson-bom.version>
-    <junit-bom.version>5.9.3</junit-bom.version>
+    <jackson-bom.version>2.15.2</jackson-bom.version>
+    <junit-bom.version>5.10.0</junit-bom.version>
   </properties>
 
 

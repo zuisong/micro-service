@@ -19,5 +19,5 @@ class GatewayApplication : CommandLineRunner {
 }
 
 fun main(args: Array<String>) {
-  SpringApplication.run(GatewayApplication::class.java, *args)
+  runApplication<GatewayApplication>(*args)
 }
