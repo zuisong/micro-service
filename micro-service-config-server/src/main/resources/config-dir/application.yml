@@ -9,6 +9,11 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
 
+spring:
+  threads:
+    virtual:
+      enabled: true
+
 logging:
   level:
     org:
