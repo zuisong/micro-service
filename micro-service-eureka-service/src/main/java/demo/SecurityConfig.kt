@@ -21,47 +21,42 @@ import org.springframework.security.web.*
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-  @Autowired
-  private val eurekaSecurityConfig: EurekaSecurityConfig
-
+    private val eurekaSecurityConfig: EurekaSecurityConfig
 ) {
 
-  @Bean
-  @Throws(java.lang.Exception::class)
-  fun filterChain(http: HttpSecurity,
-
-                  userDetailsService: UserDetailsService): SecurityFilterChain? {
-    http.authorizeHttpRequests {
-      it.anyRequest().authenticated()
+    @Bean
+    @Throws(java.lang.Exception::class)
+    fun filterChain(
+        http: HttpSecurity, userDetailsService: UserDetailsService
+    ): SecurityFilterChain? {
+        http
+            .authorizeHttpRequests {
+                it.anyRequest().authenticated()
+            }
+            .formLogin {
+                it.permitAll()
+            }
+            .csrf {
+                it.disable()
+            }
+            .httpBasic {}
+            .userDetailsService(userDetailsService)
+        return http.build()
     }
-      .formLogin {
-        it.permitAll()
-      }
-      .csrf {
-        it.disable()
-      }
-      .httpBasic {
-      }
-      .userDetailsService(userDetailsService)
-    return http.build()
-  }
 
 
-  @Bean
-  fun userDetailsService(): UserDetailsService {
-    return InMemoryUserDetailsManager(
-      User
-        .withUsername(eurekaSecurityConfig.username!!)
-        .password(eurekaSecurityConfig.password!!)
-        .authorities("ALL")
-        .build()
-    )
-  }
+    @Bean
+    fun userDetailsService(): UserDetailsService {
+        return InMemoryUserDetailsManager(
+            User.withUsername(eurekaSecurityConfig.username!!).password(eurekaSecurityConfig.password!!)
+                .authorities("ALL").build()
+        )
+    }
 
-  @Bean
-  fun passwordEncoder(): PasswordEncoder {
-    return NoOpPasswordEncoder.getInstance()
-  }
+    @Bean
+    fun passwordEncoder(): PasswordEncoder {
+        return NoOpPasswordEncoder.getInstance()
+    }
 
 }
 

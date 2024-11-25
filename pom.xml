@@ -14,19 +14,25 @@
         <module>micro-service-hello-client</module>
         <module>micro-service-hello-server</module>
         <module>micro-service-common</module>
+        <module>micro-service-authorizationserver</module>
     </modules>
 
     <properties>
         <revision>1.0.1</revision>
         <file.encoding>UTF-8</file.encoding>
         <java.version>21</java.version>
-        <kotlin.version>2.0.0-Beta2</kotlin.version>
-        <spring-cloud.version>2023.0.0</spring-cloud.version>
-        <spring-boot.version>3.2.0</spring-boot.version>
+        <kotlin.version>2.1.0-RC</kotlin.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <spring-boot.version>3.4.0</spring-boot.version>
         <groovy.version>4.0.12</groovy.version>
         <spock-bom.version>2.4-M1-groovy-4.0</spock-bom.version>
-        <jackson-bom.version>2.15.2</jackson-bom.version>
+        <jackson-bom.version>2.18.1</jackson-bom.version>
         <junit-bom.version>5.10.0</junit-bom.version>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
     </properties>
 
 
@@ -110,7 +116,7 @@
 
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <artifactId>kotlin-stdlib</artifactId>
         </dependency>
 
         <dependency>
@@ -134,22 +140,22 @@
                 <plugin>
                     <groupId>org.codehaus.gmavenplus</groupId>
                     <artifactId>gmavenplus-plugin</artifactId>
-                    <version>2.1.0</version>
+                    <version>4.0.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.5.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.8.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>flatten-maven-plugin</artifactId>
-                    <version>1.4.1</version>
+                    <version>1.6.0</version>
                 </plugin>
 
             </plugins>
@@ -163,8 +169,6 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>addSources</goal>
-                            <goal>addTestSources</goal>
                             <goal>compile</goal>
                             <goal>compileTests</goal>
                         </goals>
@@ -187,6 +191,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>purge-local-repository</goal>
+                        </goals>
+                        <configuration>
+                            <verbose>true</verbose>
+                            <manualInclude>${project.groupId}:${project.artifactId}</manualInclude>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -198,13 +214,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-help-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.5.0</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.4.0</version>
                 <configuration>
                     <verbose>true</verbose>
                 </configuration>
@@ -213,20 +229,20 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
+                <version>3.1.3</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.13.0</version>
                 <configuration>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.3.1</version>
             </plugin>
 
             <plugin>
@@ -316,7 +332,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.6.0</version>
                 <executions>
                     <!-- 添加主源码目录 -->
                     <execution>
@@ -347,38 +363,6 @@
                             </sources>
                         </configuration>
                     </execution>
-
-                    <execution>
-                        <id>parse-version</id>
-                        <goals>
-                            <goal>parse-version</goal>
-                        </goals>
-                    </execution>
-
-                    <execution>
-                        <id>remove-old-installers</id>
-                        <goals>
-                            <goal>remove-project-artifact</goal>
-                        </goals>
-                        <configuration>
-                            <removeAll>true</removeAll>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>timestamp-property</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>timestamp-property</goal>
-                        </goals>
-                        <configuration>
-                            <locale>zh-CN</locale>
-                            <timeZone>GMT+8</timeZone>
-                            <name>NOW-yyyy-MM-dd-HH-mm</name>
-                            <pattern>yyyy-MM-dd-HH-mm</pattern>
-                        </configuration>
-                    </execution>
-
                 </executions>
             </plugin>
         </plugins>

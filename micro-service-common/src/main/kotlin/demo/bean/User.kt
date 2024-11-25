@@ -7,7 +7,4 @@ data class User(
   @field:NotEmpty
   var name: String? = null,
   var password: String? = null
-) {
-
-
-}
+)

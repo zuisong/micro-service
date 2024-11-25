@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.*
 import org.springframework.cloud.client.discovery.*
 import org.springframework.cloud.openfeign.*
 import org.springframework.context.annotation.*
+import org.springframework.http.*
+import org.springframework.security.oauth2.server.resource.web.*
 import org.springframework.validation.beanvalidation.*
 import org.springframework.web.bind.annotation.*
 
@@ -51,6 +53,13 @@ class HelloServerApplication {
     client.services.forEach {
       println(it)
     }
+  }
+
+  @Bean
+  fun bearerTokenResolver(): BearerTokenResolver {
+    val bearerTokenResolver = DefaultBearerTokenResolver()
+    bearerTokenResolver.setBearerTokenHeaderName(HttpHeaders.PROXY_AUTHORIZATION)
+    return bearerTokenResolver
   }
 
 }
