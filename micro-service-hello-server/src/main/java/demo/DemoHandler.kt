@@ -1,9 +1,9 @@
 package demo
 
-import demo.bean.*
-import jakarta.validation.*
+import demo.bean.User
+import jakarta.validation.Valid
 import jakarta.validation.constraints.*
-import org.springframework.validation.annotation.*
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 

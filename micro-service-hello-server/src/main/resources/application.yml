@@ -10,3 +10,7 @@ spring:
       uri: http://localhost:8888
   profiles:
     active: dev
+logging:
+  include-application-name: true
+  pattern:
+    correlation: "aaaa %X{tid:-NONE} "

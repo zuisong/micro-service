@@ -1,18 +1,18 @@
 package demo
 
-import feign.*
-import jakarta.validation.*
-import org.hibernate.validator.*
-import org.springframework.beans.factory.annotation.*
+import feign.Logger
+import jakarta.validation.Validator
+import org.hibernate.validator.HibernateValidator
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.*
-import org.springframework.boot.autoconfigure.*
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.cloud.client.discovery.*
 import org.springframework.cloud.openfeign.*
 import org.springframework.context.annotation.*
 import org.springframework.http.*
 import org.springframework.security.oauth2.server.resource.web.*
 import org.springframework.validation.beanvalidation.*
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.RestController
 
 
 fun main(args: Array<String>) {

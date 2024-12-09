@@ -8,6 +8,10 @@ spring:
     config:
       server:
         native:
-          search-locations: classpath:/config-dir
+          search-locations:
+            - classpath:/config-dir
   profiles:
     active: native
+  threads:
+    virtual:
+      enabled: true
