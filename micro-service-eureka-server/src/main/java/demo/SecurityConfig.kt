@@ -1,14 +1,8 @@
 package demo
 
-import org.springframework.beans.factory.annotation.*
 import org.springframework.context.annotation.*
-import org.springframework.security.config.*
-import org.springframework.security.config.Customizer.*
-import org.springframework.security.config.annotation.authentication.builders.*
 import org.springframework.security.config.annotation.web.builders.*
 import org.springframework.security.config.annotation.web.configuration.*
-import org.springframework.security.config.annotation.web.configurers.*
-import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer.*
 import org.springframework.security.core.userdetails.*
 import org.springframework.security.crypto.password.*
 import org.springframework.security.provisioning.*
