@@ -5,7 +5,7 @@ import com.nimbusds.jose.jwk.source.JWKSource
 import com.nimbusds.jose.proc.SecurityContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.config.*
+import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.oauth2.jwt.*
@@ -21,12 +21,14 @@ class SecurityConfig {
     @Throws(Exception::class)
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
 
-        http.authorizeHttpRequests {
-            it.requestMatchers("/login/**").hasRole("role-name")
-            it.anyRequest().authenticated()
-        }.oauth2ResourceServer { it
-            .jwt(Customizer.withDefaults())
-        }
+        http
+            .authorizeHttpRequests {
+                it.requestMatchers("/login/**").hasRole("role-name")
+                it.anyRequest().authenticated()
+            }
+            .oauth2ResourceServer {
+                it.jwt(Customizer.withDefaults())
+            }
 
         return http.build()
     }

@@ -7,5 +7,11 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+    openfeign:
+      oauth2:
+        enabled: true
   profiles:
     active: dev
+
+logging:
+  root: debug

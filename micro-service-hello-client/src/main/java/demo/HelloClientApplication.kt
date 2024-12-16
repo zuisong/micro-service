@@ -1,20 +1,21 @@
 package demo
 
-import feign.*
+import feign.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.boot.*
-import org.springframework.boot.autoconfigure.*
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
 import org.springframework.boot.task.ThreadPoolTaskSchedulerCustomizer
-import org.springframework.cloud.client.discovery.*
-import org.springframework.cloud.openfeign.*
-import org.springframework.context.annotation.*
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient
+import org.springframework.cloud.openfeign.EnableFeignClients
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.*
 
 
 fun main(args: Array<String>) {
-  SpringApplication.run(HelloClientApplication::class.java, *args)
+  runApplication<HelloClientApplication>(*args)
 }
 
 
@@ -43,21 +44,12 @@ class ScheduledGracefulShutdownConfig {
   }
 }
 
-//@SpringBootApplication
-//@EnableScheduling
-//@EnableAsync
-//object AppConfiguration {
-//  fun main(args: Array<String?>?) {
-//    SpringApplication.run(AppConfiguration::class.java, args)
-//  }
-//}
-
 @Service
 class ScheduledService {
   private val LOGGER = LoggerFactory.getLogger(ScheduledService::class.java)
 
   @Scheduled(fixedRate = 100000000L)
-  @kotlin.Throws(InterruptedException::class)
+  @Throws(InterruptedException::class)
   fun scheduled() {
     LOGGER.info("Starting scheduled job...")
     TimeUnit.MINUTES.sleep(5)

@@ -53,6 +53,7 @@ class SecurityConfig(
         )
     }
 
+    @Suppress("DEPRECATION")
     @Bean
     fun passwordEncoder(): PasswordEncoder {
         return NoOpPasswordEncoder.getInstance()

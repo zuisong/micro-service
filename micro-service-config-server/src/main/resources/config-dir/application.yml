@@ -15,10 +15,18 @@ spring:
       enabled: true
 
 logging:
+  include-application-name: true
+  pattern:
+    correlation: "aaaa %X{tid:-NONE} "
+  structured:
+    format:
+      file: ecs
   level:
     org:
       springframework:
         web:
           servlet:
             DispatcherServlet: DEBUG
+  root:
+    debug
 

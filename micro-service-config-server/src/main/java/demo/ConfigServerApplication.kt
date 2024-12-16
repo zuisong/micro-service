@@ -1,8 +1,9 @@
 package demo
 
-import org.springframework.boot.*
-import org.springframework.boot.autoconfigure.*
-import org.springframework.cloud.config.server.*
+import org.springframework.boot.CommandLineRunner
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import org.springframework.cloud.config.server.EnableConfigServer
 
 
 /**
@@ -19,5 +20,5 @@ class ConfigServerApplication : CommandLineRunner {
 }
 
 fun main(args: Array<String>) {
-  SpringApplication.run(ConfigServerApplication::class.java, *args)
+  runApplication<ConfigServerApplication>(*args)
 }

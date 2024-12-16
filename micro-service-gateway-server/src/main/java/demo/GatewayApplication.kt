@@ -1,9 +1,11 @@
 package demo
 
-import org.springframework.beans.factory.annotation.*
-import org.springframework.boot.*
-import org.springframework.boot.autoconfigure.*
-import org.springframework.cloud.gateway.route.*
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.CommandLineRunner
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import org.springframework.cloud.gateway.route.RouteDefinitionRepository
+import java.util.logging.*
 
 @SpringBootApplication
 class GatewayApplication : CommandLineRunner {
@@ -14,7 +16,7 @@ class GatewayApplication : CommandLineRunner {
   private lateinit var config: MyConfig
 
   override fun run(vararg args: String?) {
-
+    Logger.getAnonymousLogger().info { "GatewayApplication" + args.joinToString() }
   }
 }
 

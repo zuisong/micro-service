@@ -11,6 +11,17 @@ class DemoHandler {
 
   @RequestMapping("/")
   fun hello(@RequestParam("name") name: String?): User? {
+    println("123")
+    val user = helloServerClient.hello1(name)
+    val user2 = helloServerClient.hello2(name!!, 20)
+    println("从HelloServer 获取到了一个用户$user")
+    println("从HelloServer 获取到了一个用户$user2")
+    return user
+  }
+
+  @GetMapping("/a123")
+  fun hello123(@RequestParam("name") name: String?): User? {
+    println("123")
     val user = helloServerClient.hello1(name)
     val user2 = helloServerClient.hello2(name!!, 20)
     println("从HelloServer 获取到了一个用户$user")
