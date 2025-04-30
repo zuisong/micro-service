@@ -17,22 +17,17 @@ package sample
 
 import cn.mmooo.*
 import org.assertj.core.api.Assertions
-import org.htmlunit.Page
-import org.htmlunit.WebClient
-import org.htmlunit.html.HtmlButton
-import org.htmlunit.html.HtmlElement
-import org.htmlunit.html.HtmlInput
-import org.htmlunit.html.HtmlPage
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.http.HttpStatus
-import org.springframework.test.context.junit.jupiter.SpringExtension
-import org.springframework.web.util.UriComponentsBuilder
-import java.io.IOException
+import org.htmlunit.*
+import org.htmlunit.html.*
+import org.junit.jupiter.api.*
+import org.junit.jupiter.api.extension.*
+import org.springframework.beans.factory.annotation.*
+import org.springframework.boot.test.autoconfigure.web.servlet.*
+import org.springframework.boot.test.context.*
+import org.springframework.http.*
+import org.springframework.test.context.junit.jupiter.*
+import org.springframework.web.util.*
+import java.io.*
 
 /**
  * Integration tests for the sample Authorization Server.
@@ -73,9 +68,9 @@ class DefaultAuthorizationServerApplicationTests {
 
         val loginErrorPage = signIn<HtmlPage>(page, "user1", "wrong-password")
 
-        val alert = loginErrorPage.querySelector<HtmlElement>("div[role=\"alert\"]")
+        val alert = loginErrorPage.querySelector<HtmlElement>("""div[role="alert"]""")
         Assertions.assertThat(alert).isNotNull()
-        Assertions.assertThat(alert.textContent).isEqualTo("Bad credentials")
+        Assertions.assertThat(alert.textContent).isEqualTo("Invalid credentials")
     }
 
     @Test

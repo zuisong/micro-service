@@ -12,9 +12,11 @@ import org.springframework.cloud.netflix.eureka.server.*
 @SpringBootApplication
 @EnableEurekaServer
 class Eureka2ServerApp : CommandLineRunner {
-  override fun run(vararg args: String?) {
+
+  override fun run(vararg args: String) {
     println("---------- application started")
   }
+
 }
 
 fun main(args: Array<String>) {

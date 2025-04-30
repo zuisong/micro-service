@@ -1,17 +1,15 @@
 package demo
 
-import com.nimbusds.jose.jwk.source.ImmutableSecret
-import com.nimbusds.jose.jwk.source.JWKSource
-import com.nimbusds.jose.proc.SecurityContext
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
-import org.springframework.security.config.Customizer
-import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import com.nimbusds.jose.jwk.source.*
+import com.nimbusds.jose.proc.*
+import org.springframework.context.annotation.*
+import org.springframework.security.config.*
+import org.springframework.security.config.annotation.web.builders.*
+import org.springframework.security.config.annotation.web.configuration.*
 import org.springframework.security.oauth2.jwt.*
-import org.springframework.security.web.SecurityFilterChain
-import javax.crypto.SecretKey
-import javax.crypto.spec.SecretKeySpec
+import org.springframework.security.web.*
+import javax.crypto.*
+import javax.crypto.spec.*
 
 
 @Configuration
